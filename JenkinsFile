@@ -1,0 +1,16 @@
+pipeline {
+    agent {
+        node {
+            label 'maven'
+            
+        }
+    }
+
+    stages {
+        stage('Contineous-Download') {
+            steps {
+                git 'https://github.com/sivakumar1204/tweet-trend.git'
+            }
+        }
+    }
+}
