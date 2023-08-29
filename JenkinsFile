@@ -5,11 +5,13 @@ pipeline {
             
         }
     }
-
+environment{
+    PATH = "/opt/apache-maven-3.9.4/bin:$PATH"
+}
     stages {
-        stage('Contineous-Download') {
+        stage('Contineous-Build') {
             steps {
-                git 'https://github.com/sivakumar1204/tweet-trend.git'
+                sh 'mvn clean deploy'
             }
         }
     }
