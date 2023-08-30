@@ -14,7 +14,6 @@ environment{
                 sh 'mvn clean deploy'
             }
         }
-    }
     stage('SonarQube analysis') {
     environment {
       scannerHome = tool 'Devops-Project-2-sonar-scanner'
@@ -25,4 +24,5 @@ environment{
     }
     }
     }
+}
 }
