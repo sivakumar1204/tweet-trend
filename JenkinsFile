@@ -16,10 +16,10 @@ environment{
         }
     stage('SonarQube analysis') {
     environment {
-      scannerHome = tool 'Devops-Project-2-sonar-scanner'
+      scannerHome = tool 'sivakumar-sonar-scanner'
     }
     steps{
-    withSonarQubeEnv('Devops-Project-2-sonarqube-server') { // If you have configured more than one global server connection, you can specify its name
+    withSonarQubeEnv('sivakumar-sonarqube-server') { // If you have configured more than one global server connection, you can specify its name
       sh "${scannerHome}/bin/sonar-scanner"
     }
     }
