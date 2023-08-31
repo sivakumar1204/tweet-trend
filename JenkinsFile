@@ -15,12 +15,16 @@ environment{
             }
         }
     stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('siva1204-sonar-server') {
-                    // Run SonarScanner
-                    sh 'sonar-scanner'
+    environment {
+      scannerHome = tool 'siva1204-sonar-scanner'
+    }
+        steps {
+            withSonarQubeEnv('siva1204-sonar-server') {
+                // Run SonarScanner
+                sh 'sonar-scanner'
                 }
             }
         }
     }
+}
 }
