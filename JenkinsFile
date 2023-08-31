@@ -1,23 +1,33 @@
 pipeline {
-    agent {
-        node {
-            label 'maven'
-            
-        }
-    }
-environment{
-    PATH = "/opt/apache-maven-3.9.4/bin:$PATH"
-}
+    agent any
+
     stages {
-        stage('Contineous-Build') {
+        stage('Checkout') {
             steps {
-                sh 'mvn clean deploy'
+                // Checkout your Git repository
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/sivakumar1204/tweet-trend.git']]])
             }
         }
-    stage('SonarQube Analysis') {
-    environment {
-      scannerHome = tool 'siva1204-sonar-scanner'
-    }
+        
+        stage('Build') {
+            steps {
+                // Compile and build your Java project
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('siva1204-sonar-server') {
+                    // Run SonarScanner
+                    sh 'sonar-scanner'
+                }
+            }
+        }
+        stage('SonarQube Analysis') {
+        environment {
+            scannerHome = tool 'siva1204-sonar-scanner'
+         }
         steps {
             withSonarQubeEnv('siva1204-sonar-server') {
                 // Run SonarScanner
@@ -26,5 +36,6 @@ environment{
             }
         }
     }
-}
+    }
+    
 }
