@@ -1,32 +1,27 @@
 pipeline {
-    agent any
-
-    environment {
-        PATH = "/opt/apache-maven-3.9.4/bin:$PATH"
+    agent {
+        node {
+            label 'maven'
+            
+        }
     }
+environment {
+    PATH = "/opt/apache-maven-3.9.4/bin:$PATH"
+}
     stages {
-        stage('Checkout') {
+        stage('Contineous-Build') {
             steps {
-                // Checkout your Git repository
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/sivakumar1204/tweet-trend.git']]])
+                sh 'mvn clean deploy'
             }
         }
-        
-        stage('Build') {
-            steps {
-                // Compile and build your Java project
-                sh 'mvn clean package'
-            }
-        }
-
-        stage('Contineous Test') {
-        environment {
-            scannerHome = tool 'demo-sonarqube-scanner'
-         }
+    stage('Contineous Test') {
+    environment {
+        scannerHome = tool 'demo-sonarqube-scanner'
+    }
         steps {
             withSonarQubeEnv('demo-sonarqube-server') {
                 // Run SonarScanner
-                sh 'sonar-scanner'
+                sh "${scannerHome}/bin/sonar-scanner"
                 }
             }
         }
