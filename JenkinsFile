@@ -19,12 +19,12 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
+        stage('Contineous Test') {
         environment {
-            scannerHome = tool 'demo-sonar-scanner'
+            scannerHome = tool 'demo-sonarqube-scanner'
          }
         steps {
-            withSonarQubeEnv('demo-sonar-server') {
+            withSonarQubeEnv('demo-sonarqube-server') {
                 // Run SonarScanner
                 sh "${scannerHome}/bin/sonar-scanner"
                 }
