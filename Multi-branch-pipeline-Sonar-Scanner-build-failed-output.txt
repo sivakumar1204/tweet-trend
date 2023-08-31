@@ -1,0 +1,1017 @@
+Branch indexing
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/caches/git-f8f91c4d66d1bc4bc04a98769a16077b/.git # timeout=10
+Setting origin to https://github.com/sivakumar1204/tweet-trend.git
+ > git config remote.origin.url https://github.com/sivakumar1204/tweet-trend.git # timeout=10
+Fetching origin...
+Fetching upstream changes from origin
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+ > git config --get remote.origin.url # timeout=10
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- origin +refs/heads/*:refs/remotes/origin/* # timeout=10
+Seen branch in repository origin/dev
+Seen branch in repository origin/master
+Seen branch in repository origin/stage
+Seen 3 remote branches
+Obtained JenkinsFile from c9b187a9a1b6806d6aaa2fb9d9851b23d8db5aa0
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on build-server in /home/ubuntu/jenkins/workspace/multi-branch-pipeline_master
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential github-cred
+Fetching changes from the remote Git repository
+Fetching without tags
+Checking out Revision c9b187a9a1b6806d6aaa2fb9d9851b23d8db5aa0 (master)
+Commit message: "Update sonar-project.properties"
+ > git rev-parse --resolve-git-dir /home/ubuntu/jenkins/workspace/multi-branch-pipeline_master/.git # timeout=10
+ > git config remote.origin.url https://github.com/sivakumar1204/tweet-trend.git # timeout=10
+Fetching upstream changes from https://github.com/sivakumar1204/tweet-trend.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+using GIT_ASKPASS to set credentials 
+ > git fetch --no-tags --force --progress -- https://github.com/sivakumar1204/tweet-trend.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f c9b187a9a1b6806d6aaa2fb9d9851b23d8db5aa0 # timeout=10
+ > git rev-list --no-walk 44e9c9ca1ab4542082cfb5ba159466c50ca54231 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Contineous-Build)
+[Pipeline] sh
++ mvn clean deploy
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.valaxy:demo-workshop >----------------------
+[INFO] Building demo-workshop 2.1.2
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.1.0:clean (default-clean) @ demo-workshop ---
+[INFO] Deleting /home/ubuntu/jenkins/workspace/multi-branch-pipeline_master/target
+[INFO] 
+[INFO] --- jacoco:0.8.2:prepare-agent (default) @ demo-workshop ---
+[INFO] argLine set to -javaagent:/home/ubuntu/.m2/repository/org/jacoco/org.jacoco.agent/0.8.2/org.jacoco.agent-0.8.2-runtime.jar=destfile=/home/ubuntu/jenkins/workspace/multi-branch-pipeline_master/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ demo-workshop ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- compiler:3.8.1:compile (default-compile) @ demo-workshop ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /home/ubuntu/jenkins/workspace/multi-branch-pipeline_master/target/classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ demo-workshop ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/ubuntu/jenkins/workspace/multi-branch-pipeline_master/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.8.1:testCompile (default-testCompile) @ demo-workshop ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 3 source files to /home/ubuntu/jenkins/workspace/multi-branch-pipeline_master/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.22.2:test (default-test) @ demo-workshop ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.stalin.demo.DemoWorkshopApplicationTests
+06:51:41.230 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+06:51:41.302 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+06:51:41.435 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.stalin.demo.DemoWorkshopApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+06:51:41.502 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.stalin.demo.DemoWorkshopApplicationTests], using SpringBootContextLoader
+06:51:41.523 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.stalin.demo.DemoWorkshopApplicationTests]: class path resource [com/stalin/demo/DemoWorkshopApplicationTests-context.xml] does not exist
+06:51:41.524 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.stalin.demo.DemoWorkshopApplicationTests]: class path resource [com/stalin/demo/DemoWorkshopApplicationTestsContext.groovy] does not exist
+06:51:41.528 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.stalin.demo.DemoWorkshopApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+06:51:41.529 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.stalin.demo.DemoWorkshopApplicationTests]: DemoWorkshopApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+06:51:41.659 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.stalin.demo.DemoWorkshopApplicationTests]
+06:51:41.940 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/home/ubuntu/jenkins/workspace/multi-branch-pipeline_master/target/classes/com/stalin/demo/DemoWorkshopApplication.class]
+06:51:41.947 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.stalin.demo.DemoWorkshopApplication for test class com.stalin.demo.DemoWorkshopApplicationTests
+06:51:42.294 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.stalin.demo.DemoWorkshopApplicationTests]: using defaults.
+06:51:42.295 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+06:51:42.340 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource]
+06:51:42.341 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+06:51:42.346 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7462ba4b, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4b09d1c3, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@18811c42, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@627acb38, org.springframework.test.context.support.DirtiesContextTestExecutionListener@32b95de, org.springframework.test.context.event.EventPublishingTestExecutionListener@629cbb1, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@165aa43a, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@22cd8ec2, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@7d977a20, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@35ab4260, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@76134b9b]
+06:51:42.357 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@29c25bbc testClass = DemoWorkshopApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@30704f85 testClass = DemoWorkshopApplicationTests, locations = '{}', classes = '{class com.stalin.demo.DemoWorkshopApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@309cedb6, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6a9344f5, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@6088451e, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@53c99b09], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+06:51:42.447 [main] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=-1}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.2.0.RELEASE)
+
+2023-08-30 06:51:43.283  INFO 9877 --- [           main] c.s.demo.DemoWorkshopApplicationTests    : Starting DemoWorkshopApplicationTests on ip-10-0-1-85 with PID 9877 (started by ubuntu in /home/ubuntu/jenkins/workspace/multi-branch-pipeline_master)
+2023-08-30 06:51:43.290  INFO 9877 --- [           main] c.s.demo.DemoWorkshopApplicationTests    : No active profile set, falling back to default profiles: default
+2023-08-30 06:51:48.312  INFO 9877 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2023-08-30 06:51:48.994  INFO 9877 --- [           main] c.s.demo.DemoWorkshopApplicationTests    : Started DemoWorkshopApplicationTests in 6.506 seconds (JVM running for 10.267)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.968 s - in com.stalin.demo.DemoWorkshopApplicationTests
+[INFO] Running com.stalin.demo.RepositoryDetailsControllerTest
+2023-08-30 06:51:49.958  INFO 9877 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.stalin.demo.RepositoryDetailsControllerTest], using SpringBootContextLoader
+2023-08-30 06:51:49.963  INFO 9877 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.stalin.demo.RepositoryDetailsControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2023-08-30 06:51:49.965  INFO 9877 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.stalin.demo.RepositoryDetailsControllerTest]: RepositoryDetailsControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-08-30 06:51:49.970  INFO 9877 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.stalin.demo.DemoWorkshopApplication for test class com.stalin.demo.RepositoryDetailsControllerTest
+2023-08-30 06:51:49.985  INFO 9877 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2023-08-30 06:51:49.989  INFO 9877 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5e0bed5a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@70250edd, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@727bfb81, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6c27f2a5, org.springframework.test.context.support.DirtiesContextTestExecutionListener@6d47b346, org.springframework.test.context.event.EventPublishingTestExecutionListener@35cc1bd5, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@18c6491e, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4ba73279, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@1baa65c8, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@4eedd7db, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@64c9f9a1]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.2.0.RELEASE)
+
+2023-08-30 06:51:50.079  INFO 9877 --- [           main] c.s.d.RepositoryDetailsControllerTest    : Starting RepositoryDetailsControllerTest on ip-10-0-1-85 with PID 9877 (started by ubuntu in /home/ubuntu/jenkins/workspace/multi-branch-pipeline_master)
+2023-08-30 06:51:50.082  INFO 9877 --- [           main] c.s.d.RepositoryDetailsControllerTest    : No active profile set, falling back to default profiles: default
+2023-08-30 06:51:50.920  INFO 9877 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2023-08-30 06:51:51.224  INFO 9877 --- [           main] c.s.d.RepositoryDetailsControllerTest    : Started RepositoryDetailsControllerTest in 1.226 seconds (JVM running for 12.498)
+2023-08-30 06:51:51.257  INFO 9877 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-08-30 06:51:51.257  INFO 9877 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-08-30 06:51:51.292  INFO 9877 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 34 ms
+consumerKey null consumerSecret null accessToken null accessTokenSecret null
+Twitter Factory twitter4j.TwitterFactory@244f95d2
+Code testing purpose 
+Twitter object TwitterImpl{INCLUDE_MY_RETWEET=PostParameter{name='include_my_retweet', value='true', file=null, fileBody=null}}
+Exception Authentication credentials are missing. See http://twitter4j.org/en/configuration.html for details
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.584 s - in com.stalin.demo.RepositoryDetailsControllerTest
+2023-08-30 06:51:51.808  INFO 9877 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2023-08-30 06:51:51.816  INFO 9877 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.2:report (report) @ demo-workshop ---
+[INFO] Loading execution data file /home/ubuntu/jenkins/workspace/multi-branch-pipeline_master/target/jacoco.exec
+[INFO] Analyzed bundle 'demo-workshop' with 2 classes
+[INFO] 
+[INFO] --- jar:3.1.1:jar (default-jar) @ demo-workshop ---
+[INFO] Building jar: /home/ubuntu/jenkins/workspace/multi-branch-pipeline_master/target/demo-workshop-2.1.2.jar
+[INFO] 
+[INFO] --- spring-boot:2.2.0.RELEASE:repackage (repackage) @ demo-workshop ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ demo-workshop ---
+[INFO] Installing /home/ubuntu/jenkins/workspace/multi-branch-pipeline_master/target/demo-workshop-2.1.2.jar to /home/ubuntu/.m2/repository/com/valaxy/demo-workshop/2.1.2/demo-workshop-2.1.2.jar
+[INFO] Installing /home/ubuntu/jenkins/workspace/multi-branch-pipeline_master/pom.xml to /home/ubuntu/.m2/repository/com/valaxy/demo-workshop/2.1.2/demo-workshop-2.1.2.pom
+[INFO] 
+[INFO] --- deploy:2.8.2:deploy (default-deploy) @ demo-workshop ---
+Uploading to dev: file://jarstaging/com/valaxy/demo-workshop/2.1.2/demo-workshop-2.1.2.jar
+Progress (1): 0/19 MB
+Progress (1): 0.1/19 MB
+Progress (1): 0.1/19 MB
+Progress (1): 0.1/19 MB
+Progress (1): 0.2/19 MB
+Progress (1): 0.2/19 MB
+Progress (1): 0.2/19 MB
+Progress (1): 0.3/19 MB
+Progress (1): 0.3/19 MB
+Progress (1): 0.3/19 MB
+Progress (1): 0.4/19 MB
+Progress (1): 0.4/19 MB
+Progress (1): 0.4/19 MB
+Progress (1): 0.5/19 MB
+Progress (1): 0.5/19 MB
+Progress (1): 0.5/19 MB
+Progress (1): 0.6/19 MB
+Progress (1): 0.6/19 MB
+Progress (1): 0.6/19 MB
+Progress (1): 0.7/19 MB
+Progress (1): 0.7/19 MB
+Progress (1): 0.7/19 MB
+Progress (1): 0.8/19 MB
+Progress (1): 0.8/19 MB
+Progress (1): 0.8/19 MB
+Progress (1): 0.9/19 MB
+Progress (1): 0.9/19 MB
+Progress (1): 0.9/19 MB
+Progress (1): 1.0/19 MB
+Progress (1): 1.0/19 MB
+Progress (1): 1.0/19 MB
+Progress (1): 1.0/19 MB
+Progress (1): 1.1/19 MB
+Progress (1): 1.1/19 MB
+Progress (1): 1.1/19 MB
+Progress (1): 1.2/19 MB
+Progress (1): 1.2/19 MB
+Progress (1): 1.2/19 MB
+Progress (1): 1.3/19 MB
+Progress (1): 1.3/19 MB
+Progress (1): 1.3/19 MB
+Progress (1): 1.4/19 MB
+Progress (1): 1.4/19 MB
+Progress (1): 1.4/19 MB
+Progress (1): 1.5/19 MB
+Progress (1): 1.5/19 MB
+Progress (1): 1.5/19 MB
+Progress (1): 1.6/19 MB
+Progress (1): 1.6/19 MB
+Progress (1): 1.6/19 MB
+Progress (1): 1.7/19 MB
+Progress (1): 1.7/19 MB
+Progress (1): 1.7/19 MB
+Progress (1): 1.8/19 MB
+Progress (1): 1.8/19 MB
+Progress (1): 1.8/19 MB
+Progress (1): 1.9/19 MB
+Progress (1): 1.9/19 MB
+Progress (1): 1.9/19 MB
+Progress (1): 2.0/19 MB
+Progress (1): 2.0/19 MB
+Progress (1): 2.0/19 MB
+Progress (1): 2.1/19 MB
+Progress (1): 2.1/19 MB
+Progress (1): 2.1/19 MB
+Progress (1): 2.2/19 MB
+Progress (1): 2.2/19 MB
+Progress (1): 2.2/19 MB
+Progress (1): 2.3/19 MB
+Progress (1): 2.3/19 MB
+Progress (1): 2.3/19 MB
+Progress (1): 2.4/19 MB
+Progress (1): 2.4/19 MB
+Progress (1): 2.4/19 MB
+Progress (1): 2.5/19 MB
+Progress (1): 2.5/19 MB
+Progress (1): 2.5/19 MB
+Progress (1): 2.6/19 MB
+Progress (1): 2.6/19 MB
+Progress (1): 2.6/19 MB
+Progress (1): 2.7/19 MB
+Progress (1): 2.7/19 MB
+Progress (1): 2.7/19 MB
+Progress (1): 2.8/19 MB
+Progress (1): 2.8/19 MB
+Progress (1): 2.8/19 MB
+Progress (1): 2.9/19 MB
+Progress (1): 2.9/19 MB
+Progress (1): 2.9/19 MB
+Progress (1): 2.9/19 MB
+Progress (1): 3.0/19 MB
+Progress (1): 3.0/19 MB
+Progress (1): 3.0/19 MB
+Progress (1): 3.1/19 MB
+Progress (1): 3.1/19 MB
+Progress (1): 3.1/19 MB
+Progress (1): 3.2/19 MB
+Progress (1): 3.2/19 MB
+Progress (1): 3.2/19 MB
+Progress (1): 3.3/19 MB
+Progress (1): 3.3/19 MB
+Progress (1): 3.3/19 MB
+Progress (1): 3.4/19 MB
+Progress (1): 3.4/19 MB
+Progress (1): 3.4/19 MB
+Progress (1): 3.5/19 MB
+Progress (1): 3.5/19 MB
+Progress (1): 3.5/19 MB
+Progress (1): 3.6/19 MB
+Progress (1): 3.6/19 MB
+Progress (1): 3.6/19 MB
+Progress (1): 3.7/19 MB
+Progress (1): 3.7/19 MB
+Progress (1): 3.7/19 MB
+Progress (1): 3.8/19 MB
+Progress (1): 3.8/19 MB
+Progress (1): 3.8/19 MB
+Progress (1): 3.9/19 MB
+Progress (1): 3.9/19 MB
+Progress (1): 3.9/19 MB
+Progress (1): 4.0/19 MB
+Progress (1): 4.0/19 MB
+Progress (1): 4.0/19 MB
+Progress (1): 4.1/19 MB
+Progress (1): 4.1/19 MB
+Progress (1): 4.1/19 MB
+Progress (1): 4.2/19 MB
+Progress (1): 4.2/19 MB
+Progress (1): 4.2/19 MB
+Progress (1): 4.3/19 MB
+Progress (1): 4.3/19 MB
+Progress (1): 4.3/19 MB
+Progress (1): 4.4/19 MB
+Progress (1): 4.4/19 MB
+Progress (1): 4.4/19 MB
+Progress (1): 4.5/19 MB
+Progress (1): 4.5/19 MB
+Progress (1): 4.5/19 MB
+Progress (1): 4.6/19 MB
+Progress (1): 4.6/19 MB
+Progress (1): 4.6/19 MB
+Progress (1): 4.7/19 MB
+Progress (1): 4.7/19 MB
+Progress (1): 4.7/19 MB
+Progress (1): 4.8/19 MB
+Progress (1): 4.8/19 MB
+Progress (1): 4.8/19 MB
+Progress (1): 4.8/19 MB
+Progress (1): 4.9/19 MB
+Progress (1): 4.9/19 MB
+Progress (1): 4.9/19 MB
+Progress (1): 5.0/19 MB
+Progress (1): 5.0/19 MB
+Progress (1): 5.0/19 MB
+Progress (1): 5.1/19 MB
+Progress (1): 5.1/19 MB
+Progress (1): 5.1/19 MB
+Progress (1): 5.2/19 MB
+Progress (1): 5.2/19 MB
+Progress (1): 5.2/19 MB
+Progress (1): 5.3/19 MB
+Progress (1): 5.3/19 MB
+Progress (1): 5.3/19 MB
+Progress (1): 5.4/19 MB
+Progress (1): 5.4/19 MB
+Progress (1): 5.4/19 MB
+Progress (1): 5.5/19 MB
+Progress (1): 5.5/19 MB
+Progress (1): 5.5/19 MB
+Progress (1): 5.6/19 MB
+Progress (1): 5.6/19 MB
+Progress (1): 5.6/19 MB
+Progress (1): 5.7/19 MB
+Progress (1): 5.7/19 MB
+Progress (1): 5.7/19 MB
+Progress (1): 5.8/19 MB
+Progress (1): 5.8/19 MB
+Progress (1): 5.8/19 MB
+Progress (1): 5.9/19 MB
+Progress (1): 5.9/19 MB
+Progress (1): 5.9/19 MB
+Progress (1): 6.0/19 MB
+Progress (1): 6.0/19 MB
+Progress (1): 6.0/19 MB
+Progress (1): 6.1/19 MB
+Progress (1): 6.1/19 MB
+Progress (1): 6.1/19 MB
+Progress (1): 6.2/19 MB
+Progress (1): 6.2/19 MB
+Progress (1): 6.2/19 MB
+Progress (1): 6.3/19 MB
+Progress (1): 6.3/19 MB
+Progress (1): 6.3/19 MB
+Progress (1): 6.4/19 MB
+Progress (1): 6.4/19 MB
+Progress (1): 6.4/19 MB
+Progress (1): 6.5/19 MB
+Progress (1): 6.5/19 MB
+Progress (1): 6.5/19 MB
+Progress (1): 6.6/19 MB
+Progress (1): 6.6/19 MB
+Progress (1): 6.6/19 MB
+Progress (1): 6.7/19 MB
+Progress (1): 6.7/19 MB
+Progress (1): 6.7/19 MB
+Progress (1): 6.8/19 MB
+Progress (1): 6.8/19 MB
+Progress (1): 6.8/19 MB
+Progress (1): 6.8/19 MB
+Progress (1): 6.9/19 MB
+Progress (1): 6.9/19 MB
+Progress (1): 6.9/19 MB
+Progress (1): 7.0/19 MB
+Progress (1): 7.0/19 MB
+Progress (1): 7.0/19 MB
+Progress (1): 7.1/19 MB
+Progress (1): 7.1/19 MB
+Progress (1): 7.1/19 MB
+Progress (1): 7.2/19 MB
+Progress (1): 7.2/19 MB
+Progress (1): 7.2/19 MB
+Progress (1): 7.3/19 MB
+Progress (1): 7.3/19 MB
+Progress (1): 7.3/19 MB
+Progress (1): 7.4/19 MB
+Progress (1): 7.4/19 MB
+Progress (1): 7.4/19 MB
+Progress (1): 7.5/19 MB
+Progress (1): 7.5/19 MB
+Progress (1): 7.5/19 MB
+Progress (1): 7.6/19 MB
+Progress (1): 7.6/19 MB
+Progress (1): 7.6/19 MB
+Progress (1): 7.7/19 MB
+Progress (1): 7.7/19 MB
+Progress (1): 7.7/19 MB
+Progress (1): 7.8/19 MB
+Progress (1): 7.8/19 MB
+Progress (1): 7.8/19 MB
+Progress (1): 7.9/19 MB
+Progress (1): 7.9/19 MB
+Progress (1): 7.9/19 MB
+Progress (1): 8.0/19 MB
+Progress (1): 8.0/19 MB
+Progress (1): 8.0/19 MB
+Progress (1): 8.1/19 MB
+Progress (1): 8.1/19 MB
+Progress (1): 8.1/19 MB
+Progress (1): 8.2/19 MB
+Progress (1): 8.2/19 MB
+Progress (1): 8.2/19 MB
+Progress (1): 8.3/19 MB
+Progress (1): 8.3/19 MB
+Progress (1): 8.3/19 MB
+Progress (1): 8.4/19 MB
+Progress (1): 8.4/19 MB
+Progress (1): 8.4/19 MB
+Progress (1): 8.5/19 MB
+Progress (1): 8.5/19 MB
+Progress (1): 8.5/19 MB
+Progress (1): 8.6/19 MB
+Progress (1): 8.6/19 MB
+Progress (1): 8.6/19 MB
+Progress (1): 8.7/19 MB
+Progress (1): 8.7/19 MB
+Progress (1): 8.7/19 MB
+Progress (1): 8.7/19 MB
+Progress (1): 8.8/19 MB
+Progress (1): 8.8/19 MB
+Progress (1): 8.8/19 MB
+Progress (1): 8.9/19 MB
+Progress (1): 8.9/19 MB
+Progress (1): 8.9/19 MB
+Progress (1): 9.0/19 MB
+Progress (1): 9.0/19 MB
+Progress (1): 9.0/19 MB
+Progress (1): 9.1/19 MB
+Progress (1): 9.1/19 MB
+Progress (1): 9.1/19 MB
+Progress (1): 9.2/19 MB
+Progress (1): 9.2/19 MB
+Progress (1): 9.2/19 MB
+Progress (1): 9.3/19 MB
+Progress (1): 9.3/19 MB
+Progress (1): 9.3/19 MB
+Progress (1): 9.4/19 MB
+Progress (1): 9.4/19 MB
+Progress (1): 9.4/19 MB
+Progress (1): 9.5/19 MB
+Progress (1): 9.5/19 MB
+Progress (1): 9.5/19 MB
+Progress (1): 9.6/19 MB
+Progress (1): 9.6/19 MB
+Progress (1): 9.6/19 MB
+Progress (1): 9.7/19 MB
+Progress (1): 9.7/19 MB
+Progress (1): 9.7/19 MB
+Progress (1): 9.8/19 MB
+Progress (1): 9.8/19 MB
+Progress (1): 9.8/19 MB
+Progress (1): 9.9/19 MB
+Progress (1): 9.9/19 MB
+Progress (1): 9.9/19 MB
+Progress (1): 10.0/19 MB
+Progress (1): 10.0/19 MB
+Progress (1): 10/19 MB  
+Progress (1): 10/19 MB
+Progress (1): 10/19 MB
+Progress (1): 10/19 MB
+Progress (1): 10/19 MB
+Progress (1): 10/19 MB
+Progress (1): 10/19 MB
+Progress (1): 10/19 MB
+Progress (1): 10/19 MB
+Progress (1): 10/19 MB
+Progress (1): 10/19 MB
+Progress (1): 10/19 MB
+Progress (1): 10/19 MB
+Progress (1): 10/19 MB
+Progress (1): 10/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 11/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 12/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 13/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 14/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 15/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 16/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 17/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 18/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19/19 MB
+Progress (1): 19 MB   
+                   
+Uploaded to dev: file://jarstaging/com/valaxy/demo-workshop/2.1.2/demo-workshop-2.1.2.jar (19 MB at 35 MB/s)
+Uploading to dev: file://jarstaging/com/valaxy/demo-workshop/2.1.2/demo-workshop-2.1.2.pom
+Progress (1): 3.4 kB
+                    
+Uploaded to dev: file://jarstaging/com/valaxy/demo-workshop/2.1.2/demo-workshop-2.1.2.pom (3.4 kB at 859 kB/s)
+Downloading from dev: file://jarstaging/com/valaxy/demo-workshop/maven-metadata.xml
+Progress (1): 303 B
+                   
+Downloaded from dev: file://jarstaging/com/valaxy/demo-workshop/maven-metadata.xml (303 B at 30 kB/s)
+Uploading to dev: file://jarstaging/com/valaxy/demo-workshop/maven-metadata.xml
+Progress (1): 303 B
+                   
+Uploaded to dev: file://jarstaging/com/valaxy/demo-workshop/maven-metadata.xml (303 B)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  22.943 s
+[INFO] Finished at: 2023-08-30T06:51:55Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarQube analysis)
+[Pipeline] tool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: siva1204-sonarqube-server
+[Pipeline] {
+[Pipeline] sh
++ /home/ubuntu/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/siva1204-sonar-scanner/bin/sonar-scanner
+INFO: Scanner configuration file: /home/ubuntu/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/siva1204-sonar-scanner/conf/sonar-scanner.properties
+INFO: Project root configuration file: /home/ubuntu/jenkins/workspace/multi-branch-pipeline_master/sonar-project.properties
+06:51:55.770 INFO: SonarScanner 4.8.0.2856
+06:51:55.771 INFO: Java 11.0.20 Ubuntu (64-bit)
+06:51:55.771 INFO: Linux 6.2.0-1009-aws amd64
+06:51:56.088 DEBUG: keyStore is : 
+06:51:56.088 DEBUG: keyStore type is : pkcs12
+06:51:56.088 DEBUG: keyStore provider is : 
+06:51:56.088 DEBUG: init keystore
+06:51:56.089 DEBUG: init keymanager of type SunX509
+06:51:56.356 DEBUG: Create: /home/ubuntu/.sonar/cache
+06:51:56.357 INFO: User cache: /home/ubuntu/.sonar/cache
+06:51:56.357 DEBUG: Create: /home/ubuntu/.sonar/cache/_tmp
+06:51:56.360 DEBUG: Extract sonar-scanner-api-batch in temp...
+06:51:56.364 DEBUG: Get bootstrap index...
+06:51:56.364 DEBUG: Download: https://sonarcloud.io/batch/index
+06:51:57.082 DEBUG: Get bootstrap completed
+06:51:57.089 DEBUG: Create isolated classloader...
+06:51:57.108 DEBUG: Start temp cleaning...
+06:51:57.112 DEBUG: Temp cleaning done
+06:51:57.112 INFO: Analyzing on SonarCloud
+06:51:57.116 INFO: Default locale: "en", source code encoding: "UTF-8"
+06:51:57.116 DEBUG: Work directory: /home/ubuntu/jenkins/workspace/multi-branch-pipeline_master/.scannerwork
+06:51:57.121 DEBUG: Execution execute
+06:51:57.659 DEBUG: SonarCloud 10.1.0.809
+06:51:57.983 INFO: Load global settings
+06:51:58.488 DEBUG: GET 200 https://sonarcloud.io/api/settings/values.protobuf | time=501ms
+06:51:58.503 INFO: Load global settings (done) | time=519ms
+06:51:58.512 INFO: Server id: 1BD809FA-AWHW8ct9-T_TB3XqouNu
+06:51:58.542 INFO: User cache: /home/ubuntu/.sonar/cache
+06:51:58.552 INFO: Load/download plugins
+06:51:58.553 INFO: Load plugins index
+06:51:58.913 DEBUG: GET 200 https://sonarcloud.io/api/plugins/installed | time=360ms
+06:51:59.007 INFO: Load plugins index (done) | time=454ms
+06:51:59.530 INFO: Load/download plugins (done) | time=978ms
+06:51:59.891 DEBUG: Plugins:
+06:51:59.891 DEBUG:   * IaC Code Quality and Security 1.20.0.5654 (iac)
+06:51:59.892 DEBUG:   * PL/SQL Code Quality and Security 3.10.0.5282 (plsql)
+06:51:59.892 DEBUG:   * Scala Code Quality and Security 1.14.0.4481 (sonarscala)
+06:51:59.892 DEBUG:   * C# Code Quality and Security 9.8.0.76515 (csharp)
+06:51:59.892 DEBUG:   * Vulnerability Analysis 10.2.0.22608 (security)
+06:51:59.892 DEBUG:   * Java Code Quality and Security 7.24.0.32100 (java)
+06:51:59.892 DEBUG:   * HTML Code Quality and Security 3.9.0.3600 (web)
+06:51:59.892 DEBUG:   * Flex Code Quality and Security 2.10.0.3458 (flex)
+06:51:59.892 DEBUG:   * XML Code Quality and Security 2.10.0.4108 (xml)
+06:51:59.894 DEBUG:   * Text Code Quality and Security 2.3.0.1632 (text)
+06:51:59.894 DEBUG:   * VB.NET Code Quality and Security 9.8.0.76515 (vbnet)
+06:51:59.894 DEBUG:   * Swift Code Quality and Security 4.10.0.5999 (swift)
+06:51:59.894 DEBUG:   * CFamily Code Quality and Security 6.48.0.62520 (cpp)
+06:51:59.894 DEBUG:   * Python Code Quality and Security 4.7.0.12181 (python)
+06:51:59.895 DEBUG:   * Dataflow Bug Detection Rules for Python 1.17.0.4892 (dbdpythonfrontend)
+06:51:59.895 DEBUG:   * Dataflow Bug Detection 1.17.0.4892 (dbd)
+06:51:59.895 DEBUG:   * Go Code Quality and Security 1.14.0.4481 (go)
+06:51:59.895 DEBUG:   * JaCoCo 1.3.0.1538 (jacoco)
+06:51:59.895 DEBUG:   * Kotlin Code Quality and Security 2.17.0.2902 (kotlin)
+06:51:59.895 DEBUG:   * Dataflow Bug Detection Rules for Java 1.17.0.4892 (dbdjavafrontend)
+06:51:59.896 DEBUG:   * T-SQL Code Quality and Security 1.10.0.5799 (tsql)
+06:51:59.896 DEBUG:   * Apex Code Quality and Security 1.14.0.4481 (sonarapex)
+06:51:59.896 DEBUG:   * JavaScript/TypeScript/CSS Code Quality and Security 10.5.1.22382 (javascript)
+06:51:59.896 DEBUG:   * Ruby Code Quality and Security 1.14.0.4481 (ruby)
+06:51:59.896 DEBUG:   * Vulnerability Rules for C# 10.2.0.22608 (securitycsharpfrontend)
+06:51:59.896 DEBUG:   * Vulnerability Rules for Java 10.2.0.22608 (securityjavafrontend)
+06:51:59.896 DEBUG:   * License for SonarLint 8.0.0.45690 (license)
+06:51:59.896 DEBUG:   * Vulnerability Rules for JS 10.2.0.22608 (securityjsfrontend)
+06:51:59.898 DEBUG:   * COBOL Code Quality 5.4.0.6318 (cobol)
+06:51:59.898 DEBUG:   * Vulnerability Rules for Python 10.2.0.22608 (securitypythonfrontend)
+06:51:59.901 DEBUG:   * PHP Code Quality and Security 3.32.0.10180 (php)
+06:51:59.901 DEBUG:   * ABAP Code Quality and Security 3.13.0.4389 (abap)
+06:51:59.901 DEBUG:   * Configuration detection for Code Quality and Security 1.3.0.654 (config)
+06:51:59.901 DEBUG:   * Vulnerability Rules for PHP 10.2.0.22608 (securityphpfrontend)
+06:52:00.267 DEBUG: GET 200 https://sonarcloud.io/api/server/version | time=366ms
+06:52:00.270 DEBUG: Updated analysis started with a difference of -58 milliseconds
+06:52:00.279 DEBUG: Started at Wed Aug 30 06:51:58 UTC 2023
+06:52:00.335 INFO: Loaded core extensions: developer-scanner
+06:52:00.362 DEBUG: Installed core extension: com.sonarsource.branch.DeveloperScannerCoreExtension@2160e52a
+06:52:01.440 INFO: Found an active CI vendor: 'Jenkins'
+06:52:01.482 INFO: Load project settings for component key: 'siva1204-key_tweetrend'
+06:52:01.664 DEBUG: GET 200 https://sonarcloud.io/api/settings/values.protobuf?component=siva1204-key_tweetrend | time=182ms
+06:52:01.671 INFO: Load project settings for component key: 'siva1204-key_tweetrend' (done) | time=190ms
+06:52:01.680 INFO: Process project properties
+06:52:01.687 DEBUG: Process project properties (done) | time=8ms
+06:52:01.687 INFO: Execute project builders
+06:52:01.688 DEBUG: Execute project builder: org.sonar.plugins.csharp.CSharpGlobalProtobufFileProcessor
+06:52:01.688 DEBUG: Execute project builder: org.sonar.plugins.vbnet.VbNetGlobalProtobufFileProcessor
+06:52:01.689 INFO: Execute project builders (done) | time=2ms
+06:52:01.691 INFO: Project key: siva1204-key_tweetrend
+06:52:01.692 INFO: Base dir: /home/ubuntu/jenkins/workspace/multi-branch-pipeline_master
+06:52:01.692 INFO: Working dir: /home/ubuntu/jenkins/workspace/multi-branch-pipeline_master/.scannerwork
+06:52:01.695 DEBUG: Project global encoding: UTF-8, default locale: en
+06:52:01.697 DEBUG: Creating module hierarchy
+06:52:01.697 DEBUG:   Init module 'tweetrend'
+06:52:01.698 DEBUG:     Base dir: /home/ubuntu/jenkins/workspace/multi-branch-pipeline_master
+06:52:01.698 DEBUG:     Working dir: /home/ubuntu/jenkins/workspace/multi-branch-pipeline_master/.scannerwork
+06:52:01.698 DEBUG:     Module global encoding: UTF-8, default locale: en
+06:52:01.852 INFO: Load project branches
+06:52:02.239 DEBUG: GET 200 https://sonarcloud.io/api/project_branches/list?project=siva1204-key_tweetrend | time=387ms
+06:52:02.247 INFO: Load project branches (done) | time=396ms
+06:52:02.256 INFO: Check ALM binding of project 'siva1204-key_tweetrend'
+06:52:02.420 DEBUG: GET 200 https://sonarcloud.io/api/alm_integration/is_project_bound?project=siva1204-key_tweetrend | time=162ms
+06:52:02.424 INFO: Detected project binding: NOT_BOUND
+06:52:02.424 INFO: Check ALM binding of project 'siva1204-key_tweetrend' (done) | time=168ms
+06:52:02.431 INFO: Load project pull requests
+06:52:02.597 DEBUG: GET 200 https://sonarcloud.io/api/project_pull_requests/list?project=siva1204-key_tweetrend | time=165ms
+06:52:02.600 INFO: Load project pull requests (done) | time=169ms
+06:52:02.612 INFO: Load branch configuration
+06:52:02.615 INFO: Load branch configuration (done) | time=3ms
+06:52:02.667 DEBUG: Available languages:
+06:52:02.668 DEBUG:   * Terraform => "terraform"
+06:52:02.668 DEBUG:   * CloudFormation => "cloudformation"
+06:52:02.668 DEBUG:   * Kubernetes => "kubernetes"
+06:52:02.668 DEBUG:   * Docker => "docker"
+06:52:02.668 DEBUG:   * AzureResourceManager => "azureresourcemanager"
+06:52:02.669 DEBUG:   * PL/SQL => "plsql"
+06:52:02.669 DEBUG:   * Scala => "scala"
+06:52:02.669 DEBUG:   * C# => "cs"
+06:52:02.669 DEBUG:   * Java => "java"
+06:52:02.669 DEBUG:   * HTML => "web"
+06:52:02.669 DEBUG:   * JSP => "jsp"
+06:52:02.669 DEBUG:   * Flex => "flex"
+06:52:02.669 DEBUG:   * XML => "xml"
+06:52:02.669 DEBUG:   * Text => "text"
+06:52:02.670 DEBUG:   * Secrets => "secrets"
+06:52:02.670 DEBUG:   * VB.NET => "vbnet"
+06:52:02.670 DEBUG:   * Swift => "swift"
+06:52:02.670 DEBUG:   * C => "c"
+06:52:02.670 DEBUG:   * C++ => "cpp"
+06:52:02.670 DEBUG:   * Objective-C => "objc"
+06:52:02.670 DEBUG:   * Python => "py"
+06:52:02.673 DEBUG:   * Go => "go"
+06:52:02.674 DEBUG:   * Kotlin => "kotlin"
+06:52:02.675 DEBUG:   * T-SQL => "tsql"
+06:52:02.675 DEBUG:   * Apex => "apex"
+06:52:02.675 DEBUG:   * JavaScript => "js"
+06:52:02.675 DEBUG:   * TypeScript => "ts"
+06:52:02.675 DEBUG:   * CSS => "css"
+06:52:02.675 DEBUG:   * Ruby => "ruby"
+06:52:02.675 DEBUG:   * COBOL => "cobol"
+06:52:02.675 DEBUG:   * PHP => "php"
+06:52:02.675 DEBUG:   * ABAP => "abap"
+06:52:02.675 DEBUG:   * YAML => "yaml"
+06:52:02.675 DEBUG:   * JSON => "json"
+06:52:02.686 INFO: Load quality profiles
+06:52:03.035 DEBUG: GET 404 https://sonarcloud.io/api/qualityprofiles/search.protobuf?projectKey=siva1204-key_tweetrend&organization=siva1204 | time=347ms
+06:52:03.154 DEBUG: GET 404 https://sonarcloud.io/api/qualityprofiles/search.protobuf?defaults=true&organization=siva1204 | time=118ms
+06:52:03.171 INFO: ------------------------------------------------------------------------
+06:52:03.171 INFO: EXECUTION FAILURE
+06:52:03.172 INFO: ------------------------------------------------------------------------
+06:52:03.172 INFO: Total time: 7.497s
+06:52:03.228 INFO: Final Memory: 20M/82M
+06:52:03.228 INFO: ------------------------------------------------------------------------
+06:52:03.229 ERROR: Error during SonarScanner execution
+java.lang.IllegalStateException: Unable to load component class org.sonar.scanner.report.MetadataPublisher
+	at org.sonar.core.platform.ComponentContainer$ExtendedDefaultPicoContainer.getComponent(ComponentContainer.java:52)
+	at org.picocontainer.DefaultPicoContainer.getComponent(DefaultPicoContainer.java:621)
+	at org.picocontainer.parameters.CollectionComponentParameter.getArrayInstance(CollectionComponentParameter.java:334)
+	at org.picocontainer.parameters.CollectionComponentParameter.access$100(CollectionComponentParameter.java:49)
+	at org.picocontainer.parameters.CollectionComponentParameter$1.resolveInstance(CollectionComponentParameter.java:139)
+	at org.picocontainer.parameters.ComponentParameter$1.resolveInstance(ComponentParameter.java:141)
+	at org.picocontainer.injectors.SingleMemberInjector.getParameter(SingleMemberInjector.java:78)
+	at org.picocontainer.injectors.ConstructorInjector$CtorAndAdapters.getParameterArguments(ConstructorInjector.java:309)
+	at org.picocontainer.injectors.ConstructorInjector$1.run(ConstructorInjector.java:335)
+	at org.picocontainer.injectors.AbstractInjector$ThreadLocalCyclicDependencyGuard.observe(AbstractInjector.java:270)
+	at org.picocontainer.injectors.ConstructorInjector.getComponentInstance(ConstructorInjector.java:364)
+	at org.picocontainer.injectors.AbstractInjectionFactory$LifecycleAdapter.getComponentInstance(AbstractInjectionFactory.java:56)
+	at org.picocontainer.behaviors.AbstractBehavior.getComponentInstance(AbstractBehavior.java:64)
+	at org.picocontainer.behaviors.Stored.getComponentInstance(Stored.java:91)
+	at org.picocontainer.DefaultPicoContainer.instantiateComponentAsIsStartable(DefaultPicoContainer.java:1034)
+	at org.picocontainer.DefaultPicoContainer.addAdapterIfStartable(DefaultPicoContainer.java:1026)
+	at org.picocontainer.DefaultPicoContainer.startAdapters(DefaultPicoContainer.java:1003)
+	at org.picocontainer.DefaultPicoContainer.start(DefaultPicoContainer.java:767)
+	at org.sonar.core.platform.ComponentContainer.startComponents(ComponentContainer.java:122)
+	at org.sonar.core.platform.ComponentContainer.execute(ComponentContainer.java:109)
+	at org.sonar.scanner.bootstrap.GlobalContainer.doAfterStart(GlobalContainer.java:128)
+	at org.sonar.core.platform.ComponentContainer.startComponents(ComponentContainer.java:123)
+	at org.sonar.core.platform.ComponentContainer.execute(ComponentContainer.java:109)
+	at org.sonar.batch.bootstrapper.Batch.doExecute(Batch.java:57)
+	at org.sonar.batch.bootstrapper.Batch.execute(Batch.java:51)
+	at org.sonarsource.scanner.api.internal.batch.BatchIsolatedLauncher.execute(BatchIsolatedLauncher.java:46)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.sonarsource.scanner.api.internal.IsolatedLauncherProxy.invoke(IsolatedLauncherProxy.java:60)
+	at com.sun.proxy.$Proxy0.execute(Unknown Source)
+	at org.sonarsource.scanner.api.EmbeddedScanner.doExecute(EmbeddedScanner.java:189)
+	at org.sonarsource.scanner.api.EmbeddedScanner.execute(EmbeddedScanner.java:138)
+	at org.sonarsource.scanner.cli.Main.execute(Main.java:126)
+	at org.sonarsource.scanner.cli.Main.execute(Main.java:81)
+	at org.sonarsource.scanner.cli.Main.main(Main.java:62)
+Caused by: java.lang.IllegalStateException: Unable to load component class org.sonar.scanner.rule.QualityProfiles
+	at org.sonar.core.platform.ComponentContainer$ExtendedDefaultPicoContainer.getComponent(ComponentContainer.java:52)
+	at org.picocontainer.DefaultPicoContainer.getComponent(DefaultPicoContainer.java:632)
+	at org.picocontainer.parameters.BasicComponentParameter$1.resolveInstance(BasicComponentParameter.java:118)
+	at org.picocontainer.parameters.ComponentParameter$1.resolveInstance(ComponentParameter.java:136)
+	at org.picocontainer.injectors.SingleMemberInjector.getParameter(SingleMemberInjector.java:78)
+	at org.picocontainer.injectors.ConstructorInjector$CtorAndAdapters.getParameterArguments(ConstructorInjector.java:309)
+	at org.picocontainer.injectors.ConstructorInjector$1.run(ConstructorInjector.java:335)
+	at org.picocontainer.injectors.AbstractInjector$ThreadLocalCyclicDependencyGuard.observe(AbstractInjector.java:270)
+	at org.picocontainer.injectors.ConstructorInjector.getComponentInstance(ConstructorInjector.java:364)
+	at org.picocontainer.injectors.AbstractInjectionFactory$LifecycleAdapter.getComponentInstance(AbstractInjectionFactory.java:56)
+	at org.picocontainer.behaviors.AbstractBehavior.getComponentInstance(AbstractBehavior.java:64)
+	at org.picocontainer.behaviors.Stored.getComponentInstance(Stored.java:91)
+	at org.picocontainer.DefaultPicoContainer.getInstance(DefaultPicoContainer.java:699)
+	at org.picocontainer.DefaultPicoContainer.getComponent(DefaultPicoContainer.java:647)
+	at org.sonar.core.platform.ComponentContainer$ExtendedDefaultPicoContainer.getComponent(ComponentContainer.java:50)
+	... 36 more
+Caused by: Failed to load the default quality profiles: No organization with key 'siva1204'
+06:52:03.231 ERROR: 
+06:52:03.231 ERROR: Re-run SonarScanner using the -X switch to enable full debug logging.
+[Pipeline] }
+WARN: Unable to locate 'report-task.txt' in the workspace. Did the SonarScanner succeed?
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 1
+Finished: FAILURE
+
