@@ -21,13 +21,7 @@ environment {
         steps {
             withSonarQubeEnv('demo-sonarqube-server') {
                 // Run SonarScanner
-                sh """
-                            ${scannerHome}/bin/sonar-scanner \
-                            -Dsonar.projectKey=demo-key01_tweettrend \
-                            -Dsonar.organization=demo \
-                            -Dsonar.host.url=https://sonarcloud.io \
-                            -Dsonar.login=d0bc273bbca75db0ac6ef69aa1cb0f28b9fe2ec7
-                        """
+                sh "${scannerHome}/bin/sonar-scanner"
                 }
             }
         }
