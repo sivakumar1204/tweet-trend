@@ -1,29 +1,20 @@
 pipeline {
-    agent {
-        node {
-            label 'maven'
-            
-        }
-    }
-environment {
-    PATH = "/opt/apache-maven-3.9.4/bin:$PATH"
-}
+    agent any
     stages {
-        stage('Contineous-Build') {
+        stage('Checkout') {
             steps {
-                sh 'mvn clean deploy'
+                git 'https://github.com/sivakumar1204/tweet-trend.git'
             }
         }
-    stage('Contineous Test') {
-    environment {
-        scannerHome = tool 'demo-sonarqube-scanner'
-    }
-        steps {
-            withSonarQubeEnv('demo-sonarqube-server') {
-                // Run SonarScanner
-                sh "${scannerHome}/bin/sonar-scanner"
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    def scannerHome = tool 'SonarQube Scanner'
+                    
+                    // Run SonarQube analysis
+                    sh "${scannerHome}/bin/sonar-scanner"
                 }
             }
-        }
     }
 }
+
