@@ -1,15 +1,34 @@
-node {
-  stage('SCM') {
-    git 'https://github.com/sivakumar1204/tweet-trend.git'
-  }
-  stage('SonarQube analysis') {
+pipeline {
+    agent any
+
     environment {
-      scannerHome = tool 'demo-sonar-scanner'
+        PATH = "/opt/apache-maven-3.9.4/bin:$PATH"
     }
-    steps {
-    withSonarQubeEnv('demo-sonarqube-server') { // If you have configured more than one global server connection, you can specify its name
-      sh "${scannerHome}/bin/sonar-scanner"
-    }
-    }
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout your Git repository
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/sivakumar1204/tweet-trend.git']]])
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                // Compile and build your Java project
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('SonarQube Analysis') {
+        environment {
+            scannerHome = tool 'demo-sonar-scanner'
+         }
+        steps {
+            withSonarQubeEnv('demo-sonar-server') {
+                // Run SonarScanner
+                sh "${scannerHome}/bin/sonar-scanner"
+                }
+            }
+        }
     }
 }
