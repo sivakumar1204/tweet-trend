@@ -15,15 +15,7 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('siva1204-sonar-server') {
-                    // Run SonarScanner
-                    sh 'sonar-scanner'
-                }
-            }
-        }
+        
         stage('SonarQube Analysis') {
         environment {
             scannerHome = tool 'siva1204-sonar-scanner'
@@ -36,6 +28,4 @@ pipeline {
             }
         }
     }
-    }
-    
 }
