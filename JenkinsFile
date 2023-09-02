@@ -23,29 +23,28 @@ environment {
                 echo "------------unit test cases completed-----------"
             }
         }
-	stage('Contineous Test') {
-    environment {
-        scannerHome = tool 'demo-sonarqube-scanner'
-    }
-        steps {
-            withSonarQubeEnv('demo-sonarqube-server') {
+	    stage('Contineous Test') {
+        environment {
+            scannerHome = tool 'demo-sonarqube-scanner'
+        }
+            steps {
+                withSonarQubeEnv('demo-sonarqube-server') {
                 // Run SonarScanner
-                sh "${scannerHome}/bin/sonar-scanner"
+                    sh "${scannerHome}/bin/sonar-scanner"
                 }
             }
         }
-    // No need to occupy a node
-    stage("Quality Gate") {
-        Steps {
-            script {
-                timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
-                def qg = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
-                if (qg.status != 'OK') {
-                    error "Pipeline aborted due to quality gate failure: ${qg.status}"
-                }
-            }
-        }    
-    }   
-    }
+        stage("Quality Gate") {
+            Steps {
+                script {
+                    timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
+                        def qg = waitForQualityGate() // Reuse taskId previously collected by withSonarQubeEnv
+                        if (qg.status != 'OK') {
+                            error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                        }
+                    }
+                }    
+            }   
+        }
     }
 }
