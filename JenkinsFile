@@ -11,7 +11,16 @@ environment {
     stages {
         stage('Contineous-Build') {
             steps {
-                sh 'mvn clean deploy'
+                echo "------------Build started-----------"
+                sh 'mvn clean deploy Dmaven.test.skip=true'
+                echo "------------Build completed-----------"
+            }
+        }
+        stage('Contineous-test') {
+            steps {
+                echo "------------unit test cases started-----------"
+                sh 'mvn surefire-report:report'
+                echo "------------unit test cases completed-----------"
             }
         }
 	stage('Contineous Test') {
