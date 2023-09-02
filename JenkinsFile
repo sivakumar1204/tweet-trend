@@ -5,13 +5,24 @@ pipeline {
             
         }
     }
-environment{
+environment {
     PATH = "/opt/apache-maven-3.9.4/bin:$PATH"
 }
     stages {
         stage('Contineous-Build') {
             steps {
                 sh 'mvn clean deploy'
+            }
+        }
+	stage('Contineous Test') {
+    environment {
+        scannerHome = tool 'demo-sonarqube-scanner'
+    }
+        steps {
+            withSonarQubeEnv('demo-sonarqube-server') {
+                // Run SonarScanner
+                sh "${scannerHome}/bin/sonar-scanner"
+                }
             }
         }
     }
