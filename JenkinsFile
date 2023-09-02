@@ -16,17 +16,19 @@ environment {
                 echo "------------Build completed-----------"
             }
         }
-        stage('Contineous-test') {
+
+        stage('Contineous-unit-Test') {
             steps {
                 echo "------------unit test cases started-----------"
                 sh 'mvn surefire-report:report'
                 echo "------------unit test cases completed-----------"
             }
         }
+
 	    stage('Contineous Test') {
         environment {
             scannerHome = tool 'demo-sonarqube-scanner'
-        }
+             }
             steps {
                 withSonarQubeEnv('demo-sonarqube-server') {
                 // Run SonarScanner
